@@ -28,7 +28,18 @@ QStringList ThemeCache::AllStyleSheets() const
 void ThemeCache::Set(QWidget* wdg, QString styleName)
 {
 	if (this->contains(styleName))
+	{
 		wdg->setStyleSheet(*this->object(styleName));
+		current = styleName;
+	}
 	else if (styleName.isEmpty())
+	{
 		wdg->setStyleSheet("");
+		current = "";
+	}
+}
+
+QString ThemeCache::Get() const
+{
+	return current;
 }

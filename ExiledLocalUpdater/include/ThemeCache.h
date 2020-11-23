@@ -12,7 +12,10 @@ public:
 	QStringList AllStyleSheets() const;
 	void Set(QWidget* wdg, QString styleName);
 
+	QString Get() const;
+
 private:
 	QDir stylesheetDirectory;
 	QStringList allStyleSheets;
+	QString current = "";
 };

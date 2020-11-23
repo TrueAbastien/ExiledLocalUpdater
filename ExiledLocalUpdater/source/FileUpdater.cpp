@@ -40,6 +40,8 @@ void FileUpdater::UpdateExiled(bool checkValidity)
 		}
 	}
 
+	QFile loader(exiledPath + "/Exiled.Loader.dll");
+	if (loader.exists()) loader.remove();
 	QFile::copy(buildPath + "/EXILED/Exiled.Loader.dll", exiledPath + "/Exiled.Loader.dll");
 
 	Logger::get()->Info("Exiled Files were successfully updated !");

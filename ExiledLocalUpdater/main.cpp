@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     Application w;
     w.show();
 
-    int result =  a.exec();
+    int res = a.exec();
     w.Cleanup();
-    return result;
+    return res;
 }

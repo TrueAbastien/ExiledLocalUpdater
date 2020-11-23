@@ -228,17 +228,35 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionSave"/>
+    <addaction name="actionClear"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
      <string>View</string>
     </property>
-    <addaction name="actionTheme"/>
+    <widget class="QMenu" name="menuTheme">
+     <property name="title">
+      <string>Theme</string>
+     </property>
+    </widget>
+    <addaction name="menuTheme"/>
+    <addaction name="actionDisplay"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
     </property>
+    <widget class="QMenu" name="menuSource">
+     <property name="title">
+      <string>Source</string>
+     </property>
+     <addaction name="actionApplication"/>
+     <addaction name="actionEXILED"/>
+     <addaction name="actionThemes"/>
+    </widget>
+    <addaction name="menuSource"/>
+    <addaction name="actionInformations"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -253,9 +271,54 @@ p, li { white-space: pre-wrap; }
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionTheme">
+  <action name="actionok">
    <property name="text">
-    <string>Theme</string>
+    <string>ok</string>
+   </property>
+  </action>
+  <action name="actiontemp">
+   <property name="text">
+    <string>temp</string>
+   </property>
+  </action>
+  <action name="actionApplication">
+   <property name="text">
+    <string>Application</string>
+   </property>
+  </action>
+  <action name="actionEXILED">
+   <property name="text">
+    <string>EXILED</string>
+   </property>
+  </action>
+  <action name="actionThemes">
+   <property name="text">
+    <string>Themes</string>
+   </property>
+  </action>
+  <action name="actionInformations">
+   <property name="text">
+    <string>Informations</string>
+   </property>
+  </action>
+  <action name="actionLogs">
+   <property name="text">
+    <string>Logs</string>
+   </property>
+  </action>
+  <action name="actionDisplay">
+   <property name="text">
+    <string>Display</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save Logs</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear All</string>
    </property>
   </action>
  </widget>

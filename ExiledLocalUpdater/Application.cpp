@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "ThemeLoaderAction.h"
 
 Application::Application(QWidget *parent)
     : QMainWindow(parent),
@@ -7,6 +8,7 @@ Application::Application(QWidget *parent)
 {
     ui.setupUi(this);
     buildManager = new BuildManager(&ui, QDir::currentPath());
+	setWindowTitle("EXILED Local Updater - for Windows 10 (x64)");
 
     // Logger //
     Logger::get(ui.logView);
@@ -33,19 +35,20 @@ Application::Application(QWidget *parent)
 	connect(ui.projectAddBtn, &QPushButton::clicked, this, &Application::FindProjectFolder);
 
 	// Tool Bar //
-	//
-}
+	themeList = new QActionGroup(ui.menuTheme);
+	themeList->addAction(new ThemeLoaderAction(ui.menuTheme, this, "", &styleSheetCache));
+	foreach (QString theme, styleSheetCache.AllStyleSheets())
+		themeList->addAction(new ThemeLoaderAction(ui.menuTheme, this, theme, &styleSheetCache));
 
-void Application::Cleanup()
-{
-	// Logs //
-	/*QFile f(QDir::currentPath() + "/logs.txt");
-	f.resize(0);
-	QTextStream out(&f);
-	out << ui.logView->toPlainText();
-	f.close();*/
-
-	//
+	// Menu Bar //
+	connect(ui.actionSave, &QAction::triggered, this, &Application::SaveLogs);
+	connect(ui.actionClear, &QAction::triggered, this, &Application::ClearAll);
+	connect(ui.actionDisplay, &QAction::triggered, this, &Application::PrintDisplay);
+	connect(ui.actionInformations, &QAction::triggered, this, &Application::DisplayInfo);
+	// -- Links
+	connect(ui.actionApplication, &QAction::triggered, [this]() { QDesktopServices::openUrl(QUrl("https://github.com/TrueAbastien/ExiledLocalUpdater")); });
+	connect(ui.actionEXILED, &QAction::triggered, [this]() { QDesktopServices::openUrl(QUrl(generalSettings.get("repository_url")[0])); });
+	connect(ui.actionThemes, &QAction::triggered, [this]() { QDesktopServices::openUrl(QUrl("https://qss-stock.devsecstudio.com/templates.php")); });
 }
 
 void Application::FindGameFiles()
@@ -63,6 +66,14 @@ void Application::FindGameFiles()
 		}
 		else Logger::get()->Warn("'" + folderName + "' couldn't be set as Game folder...");
 	}
+}
+
+void Application::Cleanup()
+{
+	logs.WriteText(ui.logView->toPlainText());
+
+	generalSettings.set("theme_name", styleSheetCache.Get());
+	generalSettings.writeFile();
 }
 
 void Application::FindExiledRoot()
@@ -109,4 +120,34 @@ void Application::FindArchive()
 		pathSettings.set("latest_archive", fileName);
 		pathSettings.writeFile();
 	}
+}
+
+void Application::ClearAll()
+{
+	ui.gamePathField->setText("");
+	ui.exiledPathField->setText("");
+	ui.projectList->clear();
+	ui.archivePathField->setText("");
+}
+
+void Application::SaveLogs()
+{
+	QString path = QFileDialog::getOpenFileName(this, tr("Create Logs"), QDir::currentPath(), tr("Text files (*.txt)"));
+	if (!path.isEmpty())
+	{
+		LogSaver log(path);
+		log.WriteText(ui.logView->toPlainText());
+	}
+	else Logger::get()->Warn("No file was selected, logs weren't saved as desired...");
+}
+
+void Application::PrintDisplay()
+{
+	Logger::get()->Info("Current theme is: " + styleSheetCache.Get() + ".");
+}
+
+void Application::DisplayInfo()
+{
+	QMessageBox::about(this, "Informations", "This project was made by Abastien,"
+		" as a small Qt application to ease the process of locally updating your EXILED files & dependencies.");
 }

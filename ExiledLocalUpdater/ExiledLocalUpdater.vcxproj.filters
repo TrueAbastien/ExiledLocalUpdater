@@ -65,12 +65,21 @@
     <ClCompile Include="source\BuildManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\LogSaver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThemeLoaderAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\SettingFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\ThemeCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LogSaver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -91,6 +100,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="include\BuildManager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\ThemeLoaderAction.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

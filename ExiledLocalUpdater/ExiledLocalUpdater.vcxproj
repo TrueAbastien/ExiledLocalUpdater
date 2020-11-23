@@ -110,8 +110,10 @@
     <ClCompile Include="source\FileUpdater.cpp" />
     <ClCompile Include="source\GithubReleaseGetter.cpp" />
     <ClCompile Include="source\Logger.cpp" />
+    <ClCompile Include="source\LogSaver.cpp" />
     <ClCompile Include="source\SettingFile.cpp" />
     <ClCompile Include="source\ThemeCache.cpp" />
+    <ClCompile Include="source\ThemeLoaderAction.cpp" />
     <QtRcc Include="Application.qrc" />
     <QtUic Include="MainWindow.ui" />
     <QtMoc Include="Application.h" />
@@ -119,12 +121,14 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="include\ThemeLoaderAction.h" />
     <QtMoc Include="include\AssemblyPublicizer.h" />
     <QtMoc Include="include\FileUpdater.h" />
     <QtMoc Include="include\GithubReleaseGetter.h" />
     <QtMoc Include="include\Logger.h" />
     <QtMoc Include="include\ArchiveExtractor.h" />
     <QtMoc Include="include\BuildManager.h" />
+    <ClInclude Include="include\LogSaver.h" />
     <ClInclude Include="include\SettingFile.h" />
     <ClInclude Include="include\ThemeCache.h" />
   </ItemGroup>
