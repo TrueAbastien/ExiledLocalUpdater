@@ -46,4 +46,4 @@ You can find other **.qss** files [here](https://qss-stock.devsecstudio.com/temp
 
 ---
 
-*Updated the 16th of November*
+*Updated the 6th of December*
