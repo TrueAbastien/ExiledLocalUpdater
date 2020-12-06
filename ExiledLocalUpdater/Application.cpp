@@ -9,6 +9,7 @@ Application::Application(QWidget *parent)
     ui.setupUi(this);
     buildManager = new BuildManager(&ui, QDir::currentPath());
 	setWindowTitle("EXILED Local Updater - for Windows 10 (x64)");
+	setWindowIcon(QIcon("./logo.ico"));
 
     // Logger //
     Logger::get(ui.logView);
