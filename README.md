@@ -10,6 +10,30 @@ With a bit of configuration and the push of a button, this application allows yo
 
 ## User Guide
 
+### Update Release
+
+To update your EXILED release, you'll need to follow those requirements:
+- Register your **EXILED** path (ex: ```%AppData%/Roaming/EXILED```).
+- Specify your Server DLL folder in **Game** (ex: ```Steam/steamapps/common/SCP Secret Laboratory Dedicated Server/SCPSL_Data/Managed```).
+- Add your project(s) dependencies/references folder with **Add Project**.
+
+Once all this is done, to build a specific release:
+- Download the latest release on the [EXILED Github](https://github.com/galaxy119/EXILED/releases) (ex: ```Exiled.tar.gz```).
+- Specify the archive path in the bottom field and its tag in the following field.
+- Either:
+  - Build & Update your release locally with the **Build & Update All** button.
+  - Update from the latest build with **Update from Latest** button.
+
+> :warning: Your build tag won't allow you to rebuild your current build if you do not specify a tag superior to the previous one.
+
+### Change Theme
+
+You can change your application current theme by selecting a **.qss** file under ```View > Theme```.
+
+You can find other **.qss** files [here](https://qss-stock.devsecstudio.com/templates.php) and add them under your ```themes``` folder in the ELU local files.
+
+### Miscelleanous
+
 > ```Coming soon...```
 
 ## Developer Guide
