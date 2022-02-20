@@ -36,6 +36,9 @@ private:
 		{ "Plugins/", "Exiled.Events.dll" },
 		{ "Plugins/", "Exiled.Permissions.dll" },
 		{ "Plugins/", "Exiled.Updater.dll" },
+		{ "Plugins/", "Exiled.CustomRoles.dll" },
+		{ "Plugins/", "Exiled.CreditTags.dll" },
+		{ "Plugins/", "Exiled.CustomItems.dll" },
 		{ "Plugins/dependencies/", "0Harmony.dll" },
 		{ "Plugins/dependencies/", "Exiled.API.dll" },
 		{ "Plugins/dependencies/", "YamlDotNet.dll" }
